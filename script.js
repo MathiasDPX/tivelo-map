@@ -2,7 +2,7 @@
 var map = L.map('map').setView([48.44640, -4.27179], 13);
 
 L.tileLayer('https://tile.jawg.io/jawg-lagoon/{z}/{x}/{y}{r}.png?access-token={accessToken}', {
-    attribution: '<a href="https://github.com/MathiasDPX/tivelo-map">Opensource</a> &copy; <a href="https://jawg.io" title="Tiles Courtesy of Jawg Maps" target="_blank">JawgMaps</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    attribution: '<a href="https://github.com/MathiasDPX/tivelo-map" target="_blank">Opensource</a> &copy; <a href="https://jawg.io" title="Tiles Courtesy of Jawg Maps" target="_blank">JawgMaps</a> &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors',
     minZoom: 0,
     maxZoom: 22,
     accessToken: '29WO8RvX2raLhkGQXXiY5Ic8wq5lDReNh6UJqmQcwvPw23kj8ZM67vhY7ce4uPwV'
