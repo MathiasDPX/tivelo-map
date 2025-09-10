@@ -8,6 +8,21 @@ L.tileLayer('https://tile.jawg.io/jawg-lagoon/{z}/{x}/{y}{r}.png?access-token={a
     accessToken: '29WO8RvX2raLhkGQXXiY5Ic8wq5lDReNh6UJqmQcwvPw23kj8ZM67vhY7ce4uPwV'
 }).addTo(map);
 
+// Icons
+var LeafIcon = L.Icon.extend({
+	options: {
+		shadowUrl: "images/marker-shadow.png",
+		iconSize:    [25, 41],
+		iconAnchor:  [12, 41],
+		popupAnchor: [1, -34],
+		shadowSize:  [41, 41]
+	}
+});
+
+var blueMarker = new LeafIcon({iconUrl: "images/marker-blue.png"});
+var orangeMarker = new LeafIcon({iconUrl: "images/marker-orange.png" });
+var redMarker = new LeafIcon({iconUrl: "images/marker-red.png"});
+
 // Geofencing
 var geofencing = L.polygon([
     [48.43515, -4.34519],
@@ -58,8 +73,19 @@ function loadStations() {
 
     Object.keys(stations).forEach(function(stationId) {
         var station = stations[stationId];
-        var marker = L.marker(station.coords).addTo(map);
-        marker.bindPopup('<b>' + station.name + '</b><br>Vélos disponibles: ' + station.num_bikes_available);
+	var num_bikes_available = station.num_bikes_available;
+
+	var icon;
+	if (num_bikes_available == 0) {
+		icon = redMarker
+	} else if (num_bikes_available == 1) {	
+        	icon = orangeMarker
+	} else {
+		icon = blueMarker
+	}
+	var marker = L.marker(station.coords, {icon: icon}).addTo(map);
+
+        marker.bindPopup('<b>' + station.name + '</b><br>Vélos disponibles: ' + num_bikes_available);
 
 	marker.on("mouseover", function(ev) {
 		ev.target.openPopup();
