@@ -60,6 +60,14 @@ function loadStations() {
         var station = stations[stationId];
         var marker = L.marker(station.coords).addTo(map);
         marker.bindPopup('<b>' + station.name + '</b><br>Vélos disponibles: ' + station.num_bikes_available);
+
+	marker.on("mouseover", function(ev) {
+		ev.target.openPopup();
+	})
+
+	marker.on("mouseout", function(ev) {
+		ev.target.closePopup();
+	})
     });
     
     console.log('Stations chargées:', stations);
