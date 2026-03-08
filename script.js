@@ -47,10 +47,10 @@ var stations = {};
 
 // Fonction pour récupérer les stations depuis l'API
 function loadStations() {
-    const stationInfoPromise = fetch('https://corsproxy.io/?url=https://gbfs.partners.fifteen.eu/gbfs/2.2/landerneau/en/station_information.json')
+    const stationInfoPromise = fetch('https://w.mathiasd.fr/gbfs/landerneau/station_information.json')
     .then(response => response.json());
 
-    const stationStatusPromise = fetch('https://corsproxy.io/?url=https://gbfs.partners.fifteen.eu/gbfs/2.2/landerneau/en/station_status.json')
+    const stationStatusPromise = fetch('https://w.mathiasd.fr/gbfs/landerneau/station_status.json')
     .then(response => response.json());
 
     Promise.all([stationInfoPromise, stationStatusPromise])
